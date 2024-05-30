@@ -28,7 +28,7 @@ app.get('/generate-quiz', async (req, res) => {
         
         3. If the transcript is educational and in English, generate 10 quiz questions based on its content. Each question should comprise a query, a set of four options, and the correct option selected from the list. Output the quizzes in the following JSON format: {'quizzes': [{'question': 'Question 1', 'options': ['Option A', 'Option B', 'Option C', 'Option D'], 'correct_option': 'Option A'}, {'question': 'Question 2', 'options': ['Option A', 'Option B', 'Option C', 'Option D'], 'correct_option': 'Option B'}, ..., {'question': 'Question 10', 'options': ['Option A', 'Option B', 'Option C', 'Option D'], 'correct_option': 'Option C'}]}.
         
-        4. This is very important! Output should be stringified json. With no extra things such as code fence or code blocks. Make sure its always stringified json and it can be parseable, no error should arise if the output is piped into JSON.parse function in javascript. Output should be eaily parseable.
+        4. This is very important! Output should be stringified json. With no extra things such as code fence or code blocks. Make sure its always stringified json and it can be parseable, no error should arise if the output is piped into JSON.parse function in javascript. Output should be easily parseable.
 
         The transcript is as follows: ${data}"
         `;
