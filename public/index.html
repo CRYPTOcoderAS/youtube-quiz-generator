@@ -19,6 +19,11 @@
             color: #333;
         }
 
+        #title{
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -134,7 +139,10 @@
         <label for="videoUrl">Enter YouTube Video URL:</label>
         <input type="text" id="videoUrl" name="videoUrl">
         <button onclick="generateQuiz()" id="generateBtn">Generate Quiz</button>
+        <div>
+            <p id="title"></p>
         <div class="quiz" id="quizContainer"></div>
+    </div>
         <div id="score"></div>
         <div class="loader" id="loader" style="display: none;"></div>
     </div>
@@ -146,6 +154,7 @@
         const generateBtnEl = document.getElementById("generateBtn")
         const quizContainer = document.getElementById("quizContainer");
         const scoreElement = document.getElementById("score");
+        const titleEl = document.getElementById("title")
         async function generateQuiz() {
             generateBtnEl.setAttribute("disabled", "true")
             const loader = document.getElementById("loader");
@@ -153,6 +162,7 @@
             quizContainer.innerHTML = "";
             scoreElement.innerHTML = ""
             scoreElement.style.display = "none"
+            titleEl.textContent=""
             const videoUrl = document.getElementById("videoUrl").value;
             const response = await fetch(`/generate-quiz?url=${videoUrl}`);
             const data = await response.json();
@@ -169,6 +179,7 @@
             }
             loader.style.display = "none"; // Hide loader
             generateBtnEl.removeAttribute("disabled")
+            titleEl.textContent = data.title
         }
 
         function displayQuestion() {
